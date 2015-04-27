@@ -1,0 +1,36 @@
+void init(){
+	unsigned int i=0,x=0,y=0;
+	string line,strname,airName,airLat,airLon;
+	double dairLat, dairLon;
+	vector<string> input;
+	ifstream fileinput("Init.dat");
+	 while ( getline (fileinput,line) )
+    {
+      input.push_back(line);
+    }
+	 while(i < input.size()){
+		while(y < input.size()){
+			if(input[x]==input[i]){
+		  cout<<"Exisiting city, skipping!"<<endl;
+			 }
+			else{
+			strname = input[i];
+			break;
+				}
+			x++;
+			y++;
+			}
+		 
+		
+		 airName = input [i+1];
+		 airLat = input [i+2];
+		 airLon = input [i+3];
+		 dairLat = stod(airLat);
+		 dairLon = stod(airLon);
+			 
+		 City city(strname);
+		 city.addAirport(airport(airName,dairLat,dairLon));
+		 cities.push_back(city);
+		 i = i+4;
+	}
+	}
